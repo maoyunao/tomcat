@@ -16,6 +16,8 @@
 */
 package javax.servlet.jsp;
 
+import org.apache.jasper.runtime.JspFactoryImpl;
+
 import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
@@ -72,6 +74,9 @@ public abstract class JspFactory {
      */
 
     public static JspFactory getDefaultFactory() {
+        if (deflt == null){
+            setDefaultFactory(new JspFactoryImpl());
+        }
         return deflt;
     }
 
